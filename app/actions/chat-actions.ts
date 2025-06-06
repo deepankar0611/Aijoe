@@ -17,14 +17,13 @@ export async function generateChatResponse(messages: any[], threadId?: string) {
   try {
     let thread;
     
-    // Create a new thread if no threadId is provided
-    if (!threadId) {
+    // Always create a new thread if no threadId is provided or if it's invalid
+    if (!threadId || !threadId.startsWith('thread_')) {
       thread = await openai.beta.threads.create();
     } else {
       try {
         thread = await openai.beta.threads.retrieve(threadId);
       } catch (error) {
-        // If thread retrieval fails, create a new thread
         console.log("Thread retrieval failed, creating new thread");
         thread = await openai.beta.threads.create();
       }
