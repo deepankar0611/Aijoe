@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm ci && npm run build"
+buildCommand = "npm install --legacy-peer-deps && npm run build"
 
 [deploy]
 startCommand = "npm run start"
@@ -9,4 +9,5 @@ healthcheckTimeout = 100
 
 [env]
 NODE_ENV = "production"
-NIXPACKS_NODE_VERSION = "20" 
+NIXPACKS_NODE_VERSION = "20"
+NIXPACKS_NPM_VERSION = "10.2.4" 
