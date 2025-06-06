@@ -3,17 +3,14 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import "./globals.css"
 import type { Metadata } from "next"
-import localFont from 'next/font/local'
+import { Inter } from "next/font/google"
 
-const inter = localFont({
-  src: '../public/fonts/Inter-Regular.woff2',
-  variable: '--font-inter',
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Joe 2.0",
   description: "Chat and interact with Joe, a seasoned expert and manage its knowledge base",
-  generator: 'Rohit'
+    generator: 'Rohit'
 }
 
 export default function RootLayout({
@@ -23,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
+      <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} forcedTheme="light">
           {children}
           <Toaster />
